@@ -7,7 +7,7 @@ setup(
     name='graphnet',
     version='0.1.0',
     packages=find_packages(),
-    url='https://github.com/salvaRC7/graphnet_pytorch',
+    url='https://github.com/salvaRC/graphnet_pytorch',
     license='CC BY 4.0',
     author='Salva Rühling Cachay',
     author_email='',
