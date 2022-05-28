@@ -4,18 +4,18 @@ from graphnet.constants import NODES, EDGES, GLOBALS
 from graphnet.graph_network import GraphNetwork
 
 if __name__ == '__main__':
-    num_edges = 50
-    num_nodes = 49
+    num_edges = 168
+    num_nodes = 100
     num_features_edges = 5
     num_features_nodes = 64
     num_features_globals = 16  # globals is same as vector u
-    batch_size = 128
+    batch_size = 32
 
     # generate a random graph structure
     # To get the senders, receivers defined by an adjacency matrix,
     # call senders, receivers = graphnet.utils.adj_to_sender_receivers(adjacency_matrix)
-    senders = torch.randint(0, num_nodes, num_edges)
-    receivers = torch.randint(0, num_nodes, num_edges)
+    senders = torch.randint(0, num_nodes, (num_edges,))
+    receivers = torch.randint(0, num_nodes, (num_edges,))
 
     # initialize the graph network
     graph_net = GraphNetwork(
@@ -38,5 +38,6 @@ if __name__ == '__main__':
 
     # forward it through the model
     X_out = graph_net(X_in)
-
-    print(X_out.shape)  # use 'readout_which_output' arg to control which part of the graph to return
+    # use 'readout_which_output' arg to control which part of the graph to return,
+    # we choose to return nodes above, so the below will have shape (batch-size, #nodes, output-dim)
+    print(X_out.shape)

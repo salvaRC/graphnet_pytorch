@@ -103,7 +103,7 @@ class GraphNetwork(pl.LightningModule):
         graph_new = self.update_graph(X)
         if self.output_type is not None and self.output_type != 'graph':
             graph_component = graph_new[self.output_type]
-            return graph_component.reshape(graph_component.shape[0], -1)
+            return graph_component  # .reshape(graph_component.shape[0], -1)
         else:
             return graph_new
 
