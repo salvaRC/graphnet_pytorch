@@ -2,8 +2,10 @@ import torch
 
 from graphnet.constants import NODES, EDGES, GLOBALS
 from graphnet.graph_network import GraphNetwork
+from graphnet.utils import set_seed
 
 if __name__ == '__main__':
+    set_seed(7)
     num_edges = 168
     num_nodes = 100
     num_features_edges = 5
